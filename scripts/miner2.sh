@@ -5,7 +5,7 @@ export P2P_PORT=6003
 
 # MongoDB configuration
 export DB_NAME=avalon3
-export DB_URL=mongodb://localhost:27017
+export DB_URL=mongodb://10.0.0.40:27017
 
 # Peering configuration
 #export OFFLINE=1

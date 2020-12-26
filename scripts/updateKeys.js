@@ -57,7 +57,7 @@ for (let i = 0; i < newKeys.length; i++) {
 }
 
 // Connection URL
-const url = 'mongodb://localhost:27017';
+const url = 'mongodb://10.0.0.40:27017';
  
 // Database Name
 const dbName = 'avalon2';

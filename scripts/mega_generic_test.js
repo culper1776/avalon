@@ -17,7 +17,7 @@ var beggars = []
 var startTime = null
 var successes = 0
 
-MongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true }, function(err, client) {
+MongoClient.connect('mongodb://10.0.0.40:27017', { useNewUrlParser: true }, function(err, client) {
     this.db = client.db('avalon')
     db.collection('accounts').find({name: {'$ne': master_name}, pub: master_pub, balance: {'$gt': 999}}).project({name: 1, _id: 0}).toArray(function(err, dbAccs) {
         accounts = dbAccs.map(o => o.name)

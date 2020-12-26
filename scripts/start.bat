@@ -7,7 +7,7 @@ setx P2P_PORT "6001"
 
 :: MongoDB configuration
 setx DB_NAME "avalon"
-setx DB_URL "mongodb://localhost:27017"
+setx DB_URL "mongodb://10.0.0.40:27017"
 
 :: Peering configuration
 ::setx OFFLINE "1"
