@@ -49,6 +49,8 @@ if [ "${NODE_LEADER_PUB}" != "unset" ] ; then
 	fi
 fi
 
+echo "Node Version is"
+node -v
 
 #node src/cli key > leader-key.json
 
