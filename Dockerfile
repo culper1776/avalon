@@ -25,12 +25,12 @@ ENV NODE_LEADER_PRIV unset
 ENV PEERS 'ws://35.203.60.208:6001,ws://dseed.techcoderx.com:6001,ws://139.59.209.189:6001' 
 ENV MONGO_IP unset
 
-#RUN mkdir /avalon/genesis && \
-#    cd /avalon/genesis && \
-#    wget https://backup.d.tube/genesis.zip
+RUN mkdir /avalon/genesis && \
+    cd /avalon/genesis && \
+    wget https://backup.d.tube/genesis.zip
 
-RUN mkdir /avalon/dump && \
-	cd /avalon/dump && \
-	wget https://avalon.oneloved.tube/blocks.zip
+#RUN mkdir /avalon/dump && \
+#	cd /avalon/dump && \
+#	wget https://avalon.oneloved.tube/blocks.zip
 
 CMD ["./scripts/entry.sh"]
