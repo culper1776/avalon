@@ -42,9 +42,9 @@ setx PEERS ""
 setx MAX_PEERS "20"
 
 :: your user and keys (only useful for active node owners)
-setx NODE_OWNER "dtube"
-setx NODE_OWNER_PUB "dTuBhkU6SUx9JEx1f4YEt34X9sC7QGso2dSrqE8eJyfz"
-setx NODE_OWNER_PRIV "34EpMEDFJwKbxaF7FhhLyEe3AhpM4dwHMLVfs4JyRto5"
+setx NODE_OWNER "culper1776"
+setx NODE_OWNER_PUB "rbryDv8a8am6YxnWctr4y4ReRN3FPmy6VtoHDZNkeajb"
+setx NODE_OWNER_PRIV "4Yj5Tiz2BWYvwyQGNXsZtsnAdz5JyrQHmULs9pQoLi3f"
 
 ::src path
 cd "C:\Users\Username\Desktop\avalon\src"
