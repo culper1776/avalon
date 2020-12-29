@@ -1,18 +1,21 @@
-FROM ubuntu:latest
+FROM debian:buster
 LABEL "project.home"="https://github.com/dtube/avalon"
-ARG DEBIAN_FRONTEND=noninteractive
+
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
-RUN apt-get install -y git wget tmux htop jq npm gpg curl build-essential clang
+RUN apt-get install -y curl mongodb
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN apt-get install -y git wget tmux htop jq nodejs gpg build-essential screen npm
 
 COPY ./ /avalon
 WORKDIR /avalon
 
 
-RUN wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add -
-RUN echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list
-RUN apt-get update
-RUN apt-get install -y mongodb-org-shell mongodb-org-tools
+#RUN wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add -
+#RUN echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+#RUN apt-get update
+#RUN apt-get install -y mongodb-org-shell mongodb-org-tools
 
 # Arm64
 #RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 4B7C549A058F8B6B
@@ -34,9 +37,8 @@ RUN apt-get install -y mongodb-org-shell mongodb-org-tools
 #	&& nvm alias default v14 \
 #    && nvm use v14 \
 #	&& npm install
-
-RUN export CXX=clang++ \
-&& npm install
+ 
+RUN npm install
 
 EXPOSE 6001
 EXPOSE 3001
@@ -55,8 +57,8 @@ RUN mkdir /avalon/genesis && \
     cd /avalon/genesis && \
     wget https://backup.d.tube/genesis.zip
 
-RUN mkdir /avalon/dump && \
-	cd /avalon/dump && \
-	wget https://avalon.oneloved.tube/blocks.zip
+#RUN mkdir /avalon/dump && \
+#	cd /avalon/dump && \
+#	wget https://avalon.oneloved.tube/blocks.zip
 
 CMD ["./scripts/entry.sh"]
