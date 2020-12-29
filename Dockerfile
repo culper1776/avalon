@@ -1,12 +1,14 @@
-FROM debian:buster
+FROM raspbian/stretch:latest
 LABEL "project.home"="https://github.com/dtube/avalon"
 
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
-RUN apt-get install -y curl mongodb
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
-RUN apt-get install -y git wget tmux htop jq nodejs gpg build-essential screen npm
+RUN apt-get install -y curl 
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN apt-get install -y nodejs
+# RUN apt-get install -y npm
+RUN apt-get install -y git wget tmux htop jq gpg build-essential screen mongodb
 
 COPY ./ /avalon
 WORKDIR /avalon
