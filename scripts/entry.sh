@@ -60,8 +60,10 @@ fi
 echo "Node Version is"
 node -v
 
-ntpd -gq
-service ntp start
+#ntpd -gq
+ntpq -pn
+#service ntp start
+/etc/init.d/ntp start
 
 #node src/cli key > leader-key.json
 
