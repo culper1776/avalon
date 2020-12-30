@@ -49,8 +49,19 @@ if [ "${NODE_LEADER_PUB}" != "unset" ] ; then
 	fi
 fi
 
+if [ "$SET_CONTAINER_TIMEZONE" = "true" ]; then
+	echo ${CONTAINER_TIMEZONE} >/etc/timezone && \
+	dpkg-reconfigure -f noninteractive tzdata
+	echo "Container timezone set to: $CONTAINER_TIMEZONE"
+else
+	echo "Container timezone not modified"
+fi
+
 echo "Node Version is"
 node -v
+
+ntpd -gq
+service ntp start
 
 #node src/cli key > leader-key.json
 
