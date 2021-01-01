@@ -5,7 +5,7 @@ export P2P_PORT=6004
 
 # MongoDB configuration
 export DB_NAME=avalon4
-export DB_URL=mongodb://10.0.0.40:27017
+export DB_URL= process.env.DB_URL
 
 # Peering configuration
 #export OFFLINE=1

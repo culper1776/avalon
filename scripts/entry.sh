@@ -1,7 +1,11 @@
 #!/bin/bash
 
 
-# if [ "${MONGO_IP}" != "unset" ] ; then export DB_URL="mongodb://${MONGO_IP}":27017 ; fi
+if [ "${DB_URL}" != "unset" ] ; then 
+	export DB_URL="mongodb://${DB_URL}":27017
+else
+    export DB_URL="mongodb://localhost":27017
+fi
 
 GEN_KEYS=`node src/cli.js keypair`
 GEN_PUB_KEY=`echo "${GEN_KEYS}" | jq '.pub'`
@@ -49,6 +53,21 @@ if [ "${NODE_LEADER_PUB}" != "unset" ] ; then
 	fi
 fi
 
+if [ "$SET_CONTAINER_TIMEZONE" = "true" ]; then
+	echo ${CONTAINER_TIMEZONE} >/etc/timezone && \
+	dpkg-reconfigure -f noninteractive tzdata
+	echo "Container timezone set to: $CONTAINER_TIMEZONE"
+else
+	echo "Container timezone not modified"
+fi
+
+echo "Node Version is"
+node -v
+
+#ntpd -gq
+ntpq -pn
+#service ntp start
+/etc/init.d/ntp start
 
 #node src/cli key > leader-key.json
 

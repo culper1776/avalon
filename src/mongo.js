@@ -1,5 +1,5 @@
 var db_name = process.env.DB_NAME || 'avalon'
-var db_url = process.env.DB_URL || 'mongodb://10.0.0.40:27017'
+var db_url = process.env.DB_URL || 'mongodb://loclhost:27017'
 var MongoClient = require('mongodb').MongoClient
 var fs = require('fs')
 var sha256File = require('sha256-file')
